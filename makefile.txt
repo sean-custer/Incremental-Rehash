@@ -1,0 +1,52 @@
+CXX = g++
+CXXFLAGS = -Wall -g
+
+test2.out: HashTable.o test2.cpp primes.o
+        $(CXX) $(CXXFLAGS) HashTable.o primes.o test2.cpp -o run
+
+HashTable.o: HashTable.cpp HashTable.h
+        $(CXX) $(CXXFLAGS) HashTable.cpp HashTable.h -c
+
+primes.o: primes.cpp primes.h
+        $(CXX) $(CXXFLAGS) primes.cpp primes.h -c
+
+clean:
+        rm *.o output
+
+
+
+
+
+CXXFLAGS=-g -DSOLUTION -Wall
+
+all: test1.out test2.out test3.out test4.out test5.out
+
+test1.out: HashTable.o primes.o test1.o
+        g++ -g $^ -o $@
+
+test2.out: HashTable.o primes.o test2.o
+        g++ -g $^ -o $@
+
+test3.out: HashTable.o primes.o test3.o
+        g++ -g $^ -o $@
+
+test4.out: HashTable.o primes.o test4.o
+        g++ -g $^ -o $@
+
+test5.out: HashTable.o primes.o test5.o
+        g++ -g $^ -o $@
+
+
+primes.o: primes.h
+HashTable.o: HashTable.h
+test1.o: HashTable.h primes.h words.h
+test2.o: HashTable.h primes.h words.h
+test3.o: HashTable.h primes.h words.h
+test4.o: HashTable.h primes.h words.h
+test5.o: HashTable.h primes.h words.h
+
+
+
+
+
+
