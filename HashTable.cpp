@@ -40,6 +40,7 @@ HashTable::~HashTable(){
   delete newTable;
 }
 
+//Copy Constructor
 HashTable::HashTable (HashTable& other){
 
   if(other.isRehashing())
@@ -96,7 +97,7 @@ void HashTable::insert(const char *str){
   float x = loadFactor();
   if((x < .03) and (m_isRehashing == true))
     {
-      cout << "force other to stop rehashing\n";
+      cout << "force stop rehashing\n";
       forceEndHash();
     }
 
@@ -194,7 +195,7 @@ void HashTable::rehash(int index){
 	{
 	  i = m_capacity - 1;
 	}
-      //if string is not DELETED
+      //if string is not DELETED, hash to newTable and deallocate it
       if(m_strings[i % m_capacity] != DELETED)
 	{
 	  int x = hashCode(m_strings[i]) % newTable->m_capacity;

@@ -51,7 +51,8 @@ public:
   //deallocate string returned using free()
   //when item is removed, mark slot as "deleted"
   char * remove(const char *str) ;
-  
+
+  //declares char* constant DELETED as static so we can extend the scope
   static char * const DELETED ;
   
   //returns true if there is an ongoing inc rehash
